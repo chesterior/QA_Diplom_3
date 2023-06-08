@@ -16,27 +16,39 @@ public class ConstructorPage {
     private static final By FILLINGS_SECTION_BUTTON = By.xpath(".//span[text()='Начинки']");
     private static final By BREAD_SECTION_BUTTON = By.xpath(".//span[text()='Булки']");
 
-    public By checkBreadSectionOpen = By.xpath(".//h2[text()='Булки']");
-    public By checkSaucesSectionOpen = By.xpath(".//h2[text()='Соусы']");
-    public By checkFillingsSectionOpen = By.xpath(".//h2[text()='Начинки']");
+    private static final By BREAD_SECTION = By.xpath(".//h2[text()='Булки']");
+    private static final By SAUCES_SECTION = By.xpath(".//h2[text()='Соусы']");
+    private static final By FILLINGS_SECTION = By.xpath(".//h2[text()='Начинки']");
 
 
-    @Step("Нажатие кнопки Соусы и проверка открытия соответсвующего раздела")
+    @Step("Нажатие кнопки Соусы")
     public ConstructorPage clickSaucesSectionButton() {
         driver.findElement(SAUCES_SECTION_BUTTON).click();
         return this;
     }
+    @Step("Проверка наличия раздела Соусы")
+    public boolean checkSaucesSectionIsDisplayed() {
+        return driver.findElement(SAUCES_SECTION).isDisplayed();
+    }
 
-    @Step("Нажатие кнопки Начинки и проверка открытия соответсвующего раздела")
+    @Step("Нажатие кнопки Начинки")
     public ConstructorPage clickFillingsSectionButton() {
         driver.findElement(FILLINGS_SECTION_BUTTON).click();
         return this;
     }
+    @Step("Проверка наличия раздела Начинки")
+    public boolean checkFillingsSectionIsDisplayed() {
+        return driver.findElement(FILLINGS_SECTION).isDisplayed();
+    }
 
-    @Step("Нажатие кнопки Булка и проверка открытия соответсвующего раздела")
+    @Step("Нажатие кнопки Булка")
     public ConstructorPage clickBreadSectionButton() {
         driver.findElement(SAUCES_SECTION_BUTTON).click();
         driver.findElement(BREAD_SECTION_BUTTON).click();
         return this;
+    }
+    @Step("Проверка наличия раздела Булки")
+    public boolean checkBreadSectionIsDisplayed() {
+        return driver.findElement(BREAD_SECTION).isDisplayed();
     }
 }

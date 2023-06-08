@@ -3,45 +3,43 @@ package site.nomoreparties.stellarburgers;
 
 import jdk.jfr.Description;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pages.ConstructorPage;
 import site.nomoreparties.stellarburgers.pages.MainPage;
 
 public class ConstructorTest extends TestBase {
+    private MainPage mainPage;
+    private ConstructorPage constructorPage;
+
+    @Before
+    public void setUp() {
+        super.setUp();
+        mainPage = new MainPage(driver);
+        constructorPage = new ConstructorPage(driver);
+    }
 
     @Test
     @Description("Переход к разделу Соусы")
     public void saucesSectionTest() {
-        MainPage mainPage = new MainPage(driver);
-        ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.open();
         constructorPage.clickSaucesSectionButton();
-        Assert.assertTrue("Отсутствует раздел соусы",
-                driver.findElement(constructorPage.checkSaucesSectionOpen).isDisplayed()
-        );
+        Assert.assertTrue("Отсутствует раздел соусы", constructorPage.checkSaucesSectionIsDisplayed());
     }
 
     @Test
     @Description("Переход к разделу Булки")
     public void breadSectionTest() {
-        MainPage mainPage = new MainPage(driver);
-        ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.open();
         constructorPage.clickBreadSectionButton();
-        Assert.assertTrue("Отсутствует раздел Булки",
-                driver.findElement(constructorPage.checkBreadSectionOpen).isDisplayed()
-        );
+        Assert.assertTrue("Отсутствует раздел Булки", constructorPage.checkBreadSectionIsDisplayed());
     }
 
     @Test
     @Description("Переход к разделу Начинки")
     public void fillingsSectionTest() {
-        MainPage mainPage = new MainPage(driver);
-        ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.open();
         constructorPage.clickFillingsSectionButton();
-        Assert.assertTrue("Отсутствует раздел Начинки",
-                driver.findElement(constructorPage.checkFillingsSectionOpen).isDisplayed()
-        );
+        Assert.assertTrue("Отсутствует раздел Начинки", constructorPage.checkFillingsSectionIsDisplayed());
     }
 }
